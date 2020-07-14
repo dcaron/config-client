@@ -30,7 +30,7 @@ class TestCFEnv:
         assert cfenv.configserver_client_secret() == ""
 
     def test_default_vcap_service_prefix(self, cfenv):
-        "p-config-server" in cfenv.vcap_services.keys()
+        "p.config-server" in cfenv.vcap_services.keys()
 
     def test_custom_vcap_service_prefix(self, cfenv):
         cfenv2 = CFenv(vcap_service_prefix="config-server")
@@ -39,4 +39,4 @@ class TestCFEnv:
 
     def test_format_vcap_path(self, cfenv):
         path = cfenv._format_vcap_path(".0.credentials.uri")
-        path == "p-config-server.0.credentials.uri"
+        path == "p.config-server.0.credentials.uri"

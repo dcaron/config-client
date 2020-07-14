@@ -12,7 +12,7 @@ from config.cloudfoundry import default_vcap_application, default_vcap_services
 class CFenv:
     vcap_service_prefix = attr.ib(
         type=str,
-        default=os.getenv("VCAP_SERVICE_PREFIX", "p-config-server"),
+        default=os.getenv("VCAP_SERVICE_PREFIX", "p.config-server"),
         validator=attr.validators.instance_of(str),
     )
     vcap_application = attr.ib(
@@ -30,7 +30,7 @@ class CFenv:
         if self.vcap_service_prefix not in self.vcap_services.keys():
             vcap_services_copy = self.vcap_services.copy()
             vcap_services_copy[self.vcap_service_prefix] = vcap_services_copy.pop(
-                "p-config-server"
+                "p.config-server"
             )
             self.vcap_services = vcap_services_copy
 
